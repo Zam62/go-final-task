@@ -190,7 +190,7 @@ http://localhost:8080/api/v1/calculate
     }'
 
 Пример вызова из Postman:
-![alt text](image.png)   
+![Пример вызова из Postman](docs/postman_sample.png)   
 
 
 ### Варианты ответов сервиса
