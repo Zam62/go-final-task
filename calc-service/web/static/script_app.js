@@ -2,13 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const expressionInput = document.getElementById('expression');
     const fetchDataBtn = document.getElementById('fetchdata');
     const resultDiv = document.getElementById('result');
-    const historyList = document.getElementById('history-list');
 
 
     fetchDataBtn.addEventListener('click', () => {
         calculateExpression()
     });
-
 
 
     async function calculateExpression() {
@@ -49,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }    
     });
-
 
 
 
