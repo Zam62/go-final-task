@@ -2,6 +2,7 @@ package orchestrator
 
 import (
 	calculation "calc-service/pkg"
+	"calc-service/pkg/models"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -54,12 +55,49 @@ func (o *Orchestrator) Calculate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (o *Orchestrator) ListAllExpressions(w http.ResponseWriter, r *http.Request) {
+	o.mu.RLock()
+	defer o.mu.RUnlock()
+
+	expressions := make([]models.Expression, 0, len(o.expressions))
+	for _, expr := range o.expressions {
+		expressions = append(expressions, expr)
+	}
+
+	json.NewEncoder(w).Encode(struct {
+		Expressions []models.Expression `json:"expressions"`
+	}{Expressions: expressions})
 }
 
 func (o *Orchestrator) GetExpressionByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (o *Orchestrator) ManageTask(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodGet {
+		o.ManageTask(w, r)
+		return
+	}
+
+	var result models.ResultRequest
+	if err := json.NewDecoder(r.Body).Decode(&result); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	o.mu.Lock()
+	task, ok := o.tasks[result.TaskID]
+	if !ok {
+		o.mu.Unlock()
+		http.Error(w, "task not found", http.StatusNotFound)
+		return
+	}
+
+	task.Status = result.Status
+	task.Result = &result.Result
+	// task.UpdatedAt = result.Updated
+	o.tasks[result.TaskID] = task
+
+	o.mu.Unlock()
+	w.WriteHeader(http.StatusOK)
 }
 
 // Обработчик главной страницы.
