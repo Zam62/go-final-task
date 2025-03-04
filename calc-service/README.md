@@ -155,7 +155,7 @@ Back-end часть
 ### Запуск проекта
 Для установки проекта нужно клонировать папку проекта с github.com:
     
-    git clone https://github.com/Zam62/sprint-1-final-task.git
+    git clone https://github.com/Zam62/sprint-2-final-task.git
 
 Для запуска сервера нужно перейти в рабочую директорию проекта и выполнить запуск основного файла проекта:
 
@@ -173,7 +173,7 @@ Back-end часть
 ## Примеры
 ### Сценарии использования
 
-http://localhost:3030/api/v1/calculate
+http://localhost:8080/api/v1/calculate
 
 У сервиса один endpoint с url-ом .../api/v1/calculate. Пользователь отправляет на этот url POST-запрос с телом:
 
@@ -183,14 +183,15 @@ http://localhost:3030/api/v1/calculate
 
 Для того, чтобы отправить запрос можно использовать Postman или curl. Пример вызова API с помощью утилиты curl:
 
-    curl --location 'localhost:3030/api/v1/calculate' \
+    curl --location 'localhost:8080/api/v1/calculate' \
     --header 'Content-Type: application/json' \
     --data '{
       "expression": "2+2*2"
     }'
-   
-Пример вызова из Postman
-![alt text](image.png)
+
+Пример вызова из Postman:
+![alt text](image.png)   
+
 
 ### Варианты ответов сервиса
 В ответ пользователь получает HTTP-ответ с телом:
@@ -214,4 +215,3 @@ http://localhost:3030/api/v1/calculate
 }
 
 и код 500 в случае какой-либо иной ошибки («Что-то пошло не так»).
-
