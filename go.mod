@@ -1,4 +1,4 @@
-module calc-service
+module sprint2-final-task
 
 go 1.23.2
 
