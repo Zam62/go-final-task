@@ -38,7 +38,7 @@ func (o *Orchestrator) Run() error {
 	handler := corsMiddleware(loggingMiddleware(mux))
 
 	o.server = &http.Server{
-		Addr:    ":" + o.config.Port,
+		Addr:    o.config.Host + ":" + o.config.Port,
 		Handler: handler,
 	}
 

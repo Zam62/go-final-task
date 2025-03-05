@@ -35,6 +35,7 @@ type Config struct {
 // 	}
 // }
 
+// инициализировать объект конфига
 func LoadConfig() *Config {
 	config := &Config{}
 
@@ -47,10 +48,16 @@ func LoadConfig() *Config {
 	}
 
 	config.Port = os.Getenv("PORT")
+	config.Host = os.Getenv("HOST")
 
 	if config.Port == "" {
 		log.Println("PORT не установлен, используется порт по умолчанию 8080")
 		config.Port = "8080"
+	}
+
+	if config.Host == "" {
+		log.Println("HOST не установлен, используется порт по умолчанию localhost")
+		config.Host = "localhost"
 	}
 
 	return config
