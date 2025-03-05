@@ -192,7 +192,7 @@ http://localhost:8080/home
 
 Для запуска сервера нужно перейти в рабочую директорию проекта и выполнить запуск основного файла проекта:
 
-    go run ./cmd/main.go
+    go run ./cmd/orchestrator/main.go
     
    
 
@@ -200,7 +200,7 @@ http://localhost:8080/home
 Для запуска тестов необходимо перейти в папку cmd и выполнить запуск тестов:
 
     cd cmd/
-    go test -v -timeout 30s ./cmd ./service/
+    go test -v -timeout 30s ./cmd 
 
 
 ## Примеры
