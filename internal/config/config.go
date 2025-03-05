@@ -1,4 +1,3 @@
-// internal/config/config.go
 package config
 
 import (
@@ -12,28 +11,6 @@ type Config struct {
 	Host string
 	Port string
 }
-
-// type ConfigOld struct {
-//     Env            string     `yaml:"env" env-default:"local"`
-//     StoragePath    string     `yaml:"storage_path" env-required:"true"`
-//     GRPC           GRPCConfig `yaml:"grpc"`
-//     MigrationsPath string
-//     TokenTTL       time.Duration `yaml:"token_ttl" env-default:"1h"`
-// }
-
-// type GRPCConfig struct {
-//     Port    int           `yaml:"port"`
-//     Timeout time.Duration `yaml:"timeout"`
-// }
-
-// func loadConfigOld() Config {
-// 	os.Setenv("HOST", "localhost")
-// 	os.Setenv("PORT", "8080")
-// 	return Config{
-// 		Host: os.Getenv("HOST"),
-// 		Port: os.Getenv("PORT"),
-// 	}
-// }
 
 // инициализировать объект конфига
 func LoadConfig() *Config {
@@ -56,7 +33,7 @@ func LoadConfig() *Config {
 	}
 
 	if config.Host == "" {
-		log.Println("HOST не установлен, используется порт по умолчанию localhost")
+		log.Println("HOST не установлен, используется host по умолчанию localhost")
 		config.Host = "localhost"
 	}
 
