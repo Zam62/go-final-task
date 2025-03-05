@@ -37,3 +37,9 @@ type ResultRequest struct {
 	Status  string    `json:"status"`
 	Updated time.Time `json:"updated_at"`
 }
+
+// TaskResult результат выполнения задачи
+type TaskResult struct {
+	ID     string  `json:"id" binding:"required"`
+	Result float64 `json:"result" binding:"required"`
+}

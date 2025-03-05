@@ -6,8 +6,6 @@ import (
 )
 
 func main() {
-	// TODO: инициализировать логгер
-
 	// Инициализация оркестратора
 	orchestrator := orchestrator.New()
 
