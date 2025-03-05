@@ -38,10 +38,27 @@ Back-end часть
 ## Структура
 Проект состоит из файлов и папок: 
 
-    - cmd/main - основной файл проекта
-    - cmd/main_test - тесты 
-    - service/service - сервис расчета выражений
+    - cmd/
+        orchestrator/main - основной файл проекта
+        agent/main - файл агента
+    - cmd/
+        orcestrator/main_test - тесты 
+        agent/main_test - тесты агента
+    - configs - конфигурационные файлы
+    - docs - документация
+    - internal/
+        orchestrator - внутренние файлы проекта
+        agent - внутренние файлы агента
+    - pkg/
+        models - модели        
+        calculation - сервис расчета выражений
+    - web/
+        static - статические файлы веб-интерфейса
+        template - шаблоны страниц html    
     - README.MD - описание проекта
+    - DESCRIPTION.MD - описание задачи
+    docker-compose.yaml - инструкции для создания контейнеров
+    Dockerfile - создание образа
 
 
 ## Оркестратор
