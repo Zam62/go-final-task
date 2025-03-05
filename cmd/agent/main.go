@@ -100,22 +100,6 @@ func (a *Agent) submitResult(result models.TaskResult) error {
 func (a *Agent) processTask(task models.Task) error {
 	time.Sleep(time.Duration(task.OperationTime) * time.Millisecond) // Имитация длительного вычисления
 
-	// if strings.HasPrefix(task.Arg1, "task:") || strings.HasPrefix(task.Arg2, "task:") {
-	// 	log.Printf("Task %s has unresolved dependencies, returning to queue", task.ID)
-	// 	return nil
-	// }
-
-	// // Преобразуем аргументы в числа
-	// arg1, err := strconv.ParseFloat(task.Arg1, 64)
-	// if err != nil {
-	// 	return fmt.Errorf("invalid argument 1: %v", err)
-	// }
-
-	// arg2, err := strconv.ParseFloat(task.Arg2, 64)
-	// if err != nil {
-	// 	return fmt.Errorf("invalid argument 2: %v", err)
-	// }
-
 	arg1 := task.Arg1
 	arg2 := task.Arg2
 
