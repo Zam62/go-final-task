@@ -1,11 +1,11 @@
 package orchestrator
 
 import (
-	calculation "calc-service/pkg"
-	"calc-service/pkg/models"
 	"encoding/json"
 	"log"
 	"net/http"
+	calculation "sprint2-final-task/pkg"
+	"sprint2-final-task/pkg/models"
 	"strings"
 	"text/template"
 )

@@ -1,8 +1,8 @@
 package main
 
 import (
-	orchestrator "calc-service/internal/orchestrator"
 	"os"
+	"sprint2-final-task/internal/orchestrator"
 	"testing"
 )
 

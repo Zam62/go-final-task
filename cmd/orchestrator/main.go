@@ -1,8 +1,8 @@
 package main
 
 import (
-	orchestrator "calc-service/internal/orchestrator"
 	"log"
+	"sprint2-final-task/internal/orchestrator"
 )
 
 func main() {

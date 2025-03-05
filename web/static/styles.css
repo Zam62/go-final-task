@@ -9,6 +9,7 @@ body {
 
 .container {
     max-width: 800px;
+    height: auto;
     margin: 0 auto;
     background: white;
     padding: 20px 30px;
@@ -18,7 +19,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #2c3e50;
+    color: #275a04;
     margin-bottom: 30px;
     font-weight: 600;
 }
@@ -28,14 +29,6 @@ h2 {
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     margin-top: 30px;
-}
-
-.calculator {
-    margin-bottom: 30px;
-    padding: 25px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .input-group {
@@ -84,78 +77,3 @@ button:active {
     border-radius: 4px;
     font-weight: 500;
 }
-
-.success {
-    color: #27ae60;
-    background-color: rgba(39, 174, 96, 0.1);
-    border-left: 4px solid #27ae60;
-    padding-left: 12px;
-}
-
-.error {
-    color: #e74c3c;
-    background-color: rgba(231, 76, 60, 0.1);
-    border-left: 4px solid #e74c3c;
-    padding-left: 12px;
-}
-
-.processing {
-    color: #f39c12;
-    background-color: rgba(243, 156, 18, 0.1);
-    border-left: 4px solid #f39c12;
-    padding-left: 12px;
-}
-
-#history-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.history-item {
-    padding: 15px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.2s;
-}
-
-.history-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.history-item.completed {
-    border-left: 4px solid #27ae60;
-}
-
-.history-item.error {
-    border-left: 4px solid #e74c3c;
-}
-
-.history-item.processing {
-    border-left: 4px solid #f39c12;
-}
-
-.history-item .expression {
-    font-weight: bold;
-    flex: 1;
-}
-
-.history-item .status {
-    color: #7f8c8d;
-    margin: 0 15px;
-    font-size: 0.9em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.history-item .result {
-    font-weight: bold;
-    color: #27ae60;
-    min-width: 80px;
-    text-align: right;
-} 

@@ -4,11 +4,10 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"sprint2-final-task/pkg/models"
+	"sync"
 
 	"github.com/joho/godotenv"
-
-	"calc-service/pkg/models"
-	"sync"
 )
 
 type Config struct {
