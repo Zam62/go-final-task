@@ -192,7 +192,7 @@ http://localhost:8080/home
 ### Запуск проекта
 Для установки проекта нужно клонировать папку проекта с github.com:
     
-    git clone https://github.com/Zam62/sprint-2-final-task.git
+    git clone https://github.com/Zam62/sprint2-final-task.git
 
 Для запуска сервера нужно перейти в рабочую директорию проекта и выполнить запуск основного файла проекта:
 
