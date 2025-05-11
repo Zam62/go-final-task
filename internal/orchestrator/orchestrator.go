@@ -1,10 +1,11 @@
 package orchestrator
 
 import (
+	"go-final-task/internal/config"
+	"go-final-task/pkg/database"
+	"go-final-task/pkg/models"
 	"log"
 	"net/http"
-	"sprint2-final-task/internal/config"
-	"sprint2-final-task/pkg/models"
 	"sync"
 )
 
@@ -25,6 +26,8 @@ func New() *Orchestrator {
 		config:      config.LoadConfig(),
 	}
 }
+
+var db *database.SqlDB
 
 func (o *Orchestrator) Run() error {
 	mux := http.NewServeMux()

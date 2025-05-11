@@ -2,10 +2,10 @@ package orchestrator
 
 import (
 	"encoding/json"
+	calculation "go-final-task/pkg"
+	"go-final-task/pkg/models"
 	"log"
 	"net/http"
-	calculation "sprint2-final-task/pkg"
-	"sprint2-final-task/pkg/models"
 	"strings"
 	"text/template"
 )
@@ -92,7 +92,7 @@ func (o *Orchestrator) ManageTask(w http.ResponseWriter, r *http.Request) {
 	}
 
 	task.Status = result.Status
-	task.Result = &result.Result
+	task.Result = result.Result
 	// task.UpdatedAt = result.Updated
 	o.tasks[result.TaskID] = task
 

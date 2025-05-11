@@ -7,7 +7,7 @@ type Expression struct {
 	ID        string    `json:"id"`
 	Text      string    `json:"expression"`
 	Status    string    `json:"status"`
-	Result    *float64  `json:"result,omitempty"`
+	Result    float64   `json:"result,omitempty"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -20,7 +20,7 @@ type Task struct {
 	Arg2          float64   `json:"arg2"`
 	Operation     string    `json:"operation"`
 	Status        string    `json:"status"`
-	Result        *float64  `json:"result,omitempty"`
+	Result        float64   `json:"result,omitempty"`
 	OperationTime int       `json:"operation_time"` // время выполнения в мс
 	CreatedAt     time.Time `json:"created_at"`
 }
@@ -42,4 +42,11 @@ type ResultRequest struct {
 type TaskResult struct {
 	ID     string  `json:"id" binding:"required"`
 	Result float64 `json:"result" binding:"required"`
+}
+
+// User зарегистрированный пользователь
+type User struct {
+	ID       int64
+	Login    string
+	Password string
 }

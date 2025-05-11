@@ -1,9 +1,9 @@
 package main
 
 import (
+	"go-final-task/internal/agent"
 	"log"
 	"os"
-	"sprint2-final-task/internal/agent"
 	"strconv"
 	"sync"
 )

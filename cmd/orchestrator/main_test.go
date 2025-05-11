@@ -1,8 +1,8 @@
 package main
 
 import (
+	"go-final-task/internal/orchestrator"
 	"os"
-	"sprint2-final-task/internal/orchestrator"
 	"testing"
 )
 

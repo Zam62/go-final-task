@@ -82,9 +82,26 @@ http://localhost:8080/home
 
 
 ## Оркестратор
-Сервер, который имеет следующие API-endpoint
+Сервер, который имеет следующие API-endpoint'ы
 
-Добавление вычисления арифметического выражения
+### Регистрация пользователя
+
+Пользователь отправляет запрос POST /api/v1/register { "login": , "password": }
+
+В ответ получаем 200+OK (в случае успеха)
+
+В противном случае - ошибка
+
+
+### Авторизация пользователя
+
+Пользователь отправляет запрос POST /api/v1/login { "login": , "password": }
+
+В ответ получае 200+OK и JWT токен для последующей авторизации
+
+
+
+### Вычисление арифметического выражения
 
     curl --location 'localhost/api/v1/calculate' \
     --header 'Content-Type: application/json' \
@@ -100,7 +117,7 @@ http://localhost:8080/home
         "id": <уникальный идентификатор выражения>
     }
 
-Получение списка выражений
+### Получение списка выражений
 
     curl --location 'localhost/api/v1/expressions'
 
@@ -148,7 +165,7 @@ http://localhost:8080/home
             }
     }
 
-Получение задачи для выполнения
+### Получение задачи для выполнения
 
     curl --location 'localhost/internal/task'
 
@@ -171,7 +188,7 @@ http://localhost:8080/home
             }
     }
 
-Прием результата обработки данных.
+### Прием результата обработки данных.
 
     curl --location 'localhost/internal/task' \
     --header 'Content-Type: application/json' \

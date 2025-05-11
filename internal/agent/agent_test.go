@@ -2,9 +2,9 @@ package agent
 
 import (
 	"encoding/json"
+	"go-final-task/pkg/models"
 	"net/http"
 	"net/http/httptest"
-	"sprint2-final-task/pkg/models"
 	"testing"
 )
 
