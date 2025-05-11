@@ -212,12 +212,23 @@ http://localhost:8080/home
     
     git clone https://github.com/Zam62/go-final-task.git
 
+Установите зависимости:
+
+    go mod tidy
+
+Создайте файл .env в корневой папке и укажите в нем параметры
+
+
 Для запуска сервера нужно перейти в рабочую директорию проекта и выполнить запуск основного файла проекта:
 
     go run ./cmd/orchestrator/main.go
 
+
 ### Установка Docker
-В проекте настроены Docker    
+В проекте настроены Docker-compose файлы. 
+
+    Docker версия 24.0 или выше
+    Скачать и установить Docker: https://www.docker.com/get-started
     
    
 
