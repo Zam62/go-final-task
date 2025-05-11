@@ -69,6 +69,7 @@ http://localhost:8080/home
         orchestrator - внутренние файлы проекта
         agent - внутренние файлы агента
     - pkg/
+        database - код для работы с базой данных
         models - модели        
         calculation - сервис расчета выражений
     - web/
@@ -209,11 +210,14 @@ http://localhost:8080/home
 ### Запуск проекта
 Для установки проекта нужно клонировать папку проекта с github.com:
     
-    git clone https://github.com/Zam62/sprint2-final-task.git
+    git clone https://github.com/Zam62/go-final-task.git
 
 Для запуска сервера нужно перейти в рабочую директорию проекта и выполнить запуск основного файла проекта:
 
     go run ./cmd/orchestrator/main.go
+
+### Установка Docker
+В проекте настроены Docker    
     
    
 
