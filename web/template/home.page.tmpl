@@ -11,6 +11,16 @@
         <header>
             <h1><a href='/home'>Calculator</a></h1>
         </header>
+            <div class="auth-section" id="authSection">
+                <h2 id="authTitle">Login</h2>
+                <form id="authForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit" class="btn btn-primary" id="authButton">Login</button>
+                </form>
+            <p id="authToggle">Don't have an account? <a href="#" id="toggleLink">Register</a></p>
+        </div>
+
             <div class="container">
                 <div class="input-group1">
                     <input type="text" id="expression" placeholder="Введите выражение (например, 1+2*(3-4)/5)">
