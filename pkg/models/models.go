@@ -32,6 +32,8 @@ type TaskResponse struct {
 
 // ResultRequest структура для приема результата от агента
 type ResultRequest struct {
+	ID      int       `json:"id"`
+	Error   string    `json:"error"`
 	TaskID  string    `json:"id"`
 	Result  float64   `json:"result"`
 	Status  string    `json:"status"`
@@ -42,6 +44,7 @@ type ResultRequest struct {
 type TaskResult struct {
 	ID     string  `json:"id" binding:"required"`
 	Result float64 `json:"result" binding:"required"`
+	Error  string  `json:"error"`
 }
 
 // User зарегистрированный пользователь

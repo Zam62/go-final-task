@@ -1,19 +1,33 @@
-ackage agent
+package agent
 
 import (
 	"context"
 	"log"
 	"time"
 
-	pb "github.com/Zam62/go-final-task/api/gen/go"
+	pb "go-final-task/api/gen/go"
+	"go-final-task/pkg/models"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+)
+
+type Task struct {
+	ID   string
+	Arg1 string
+	Arg2 string
+	Type string
+}
+
+var (
+	resultsCh = make(chan *models.ResultRequest)
+	tasksCh   = make(chan *Task)
 )
 
 func (a *Agent) Connect() {
 	for {
 		conn, err := grpc.NewClient(
-			a.config.OrchestratorAddress,
+			a.orchestratorURL,
 			grpc.WithTransportCredentials(insecure.NewCredentials()))
 
 		if err != nil {
@@ -62,7 +76,7 @@ func handleStream(client pb.OrchestratorClient) error {
 				}
 
 				tasksCh <- &Task{
-					ID:   int(task.Id),
+					ID:   string(task.Id),
 					Arg1: task.Arg1,
 					Arg2: task.Arg2,
 					Type: task.Operator,

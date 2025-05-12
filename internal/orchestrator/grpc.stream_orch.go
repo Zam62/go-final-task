@@ -4,16 +4,30 @@ import (
 	"context"
 	"log"
 	"net"
+	"strconv"
 	"sync"
 
-	pb "github.com/Zam62/go-final-task/api/gen/go"
-	"github.com/Zam62/go-final-task/internal/models"
+	pb "go-final-task/api/gen/go"
+	"go-final-task/pkg/models"
+
 	"google.golang.org/grpc"
 )
 
 const (
 	tcp         = "tcp"
 	addr string = ":5000"
+)
+
+type Task struct {
+	ID   int32
+	Arg1 string
+	Arg2 string
+	Type string
+}
+
+var (
+	resultsCh = make(chan *models.TaskResult)
+	tasksCh   = make(chan *models.Task)
 )
 
 type Server struct {
@@ -36,15 +50,18 @@ func (s *Server) Calculate(stream pb.Orchestrator_CalculateServer) error {
 
 	go func() {
 		defer cancel()
+
 		for {
 			select {
 			case task := <-tasksCh:
 				s.mu.Lock()
+				i64, _ := strconv.ParseInt(task.ID, 10, 32)
+
 				err := stream.Send(&pb.TaskRequest{
-					Id:       int32(task.ID),
-					Arg1:     task.Left.Value,
-					Arg2:     task.Right.Value,
-					Operator: task.Value,
+					Id:       int32(i64),
+					Arg1:     strconv.FormatFloat(task.Arg1, 'f', -1, 64),
+					Arg2:     strconv.FormatFloat(task.Arg2, 'f', -1, 64),
+					Operator: task.Operation,
 				})
 				s.mu.Unlock()
 
@@ -72,8 +89,8 @@ func (s *Server) Calculate(stream pb.Orchestrator_CalculateServer) error {
 					log.Printf("Receive error: %v", err)
 					return
 				}
-				resultsCh <- models.Result{
-					ID:     int(res.Id),
+				resultsCh <- &models.TaskResult{
+					ID:     string(res.Id),
 					Result: float64(res.Result),
 					Error:  res.Error,
 				}
