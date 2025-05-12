@@ -69,8 +69,11 @@ http://localhost:8080/home
         orchestrator - внутренние файлы проекта
         agent - внутренние файлы агента
     - pkg/
-        database - код для работы с базой данных
-        crypto/jwt - получение и верификация токена 
+        auth - login, validation
+        database - код для создания таблиц и работы с базой данных
+        crypto/
+            jwt - получение и верификация токена 
+            password - генерация пароля
         models - модели        
         calculation - сервис расчета выражений
     - web/
