@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	calculation "go-final-task/pkg"
+	validator "go-final-task/pkg/auth"
+	"go-final-task/pkg/crypto/jwt"
 	"go-final-task/pkg/models"
 	"log"
 	"net/http"
@@ -121,6 +123,12 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		errorResponse(w, "invalid request body", http.StatusBadRequest)
 		log.Printf("Code: %v, json decoding error", http.StatusBadRequest)
+		return
+	}
+
+	err = validator.LoginValidate(user.Login)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusUnprocessableEntity)
 		return
 	}
 
