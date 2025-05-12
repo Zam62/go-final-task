@@ -10,7 +10,6 @@ import (
 	"sync"
 
 	_ "github.com/mattn/go-sqlite3"
-	// "github.com/vedsatt/calc_prl/internal/models"
 )
 
 type (
@@ -42,7 +41,7 @@ func createTables(ctx context.Context, db *sql.DB) error {
 		status TEXT,
 		result REAL,
 	
-		FOREIGN KEY (user_id)  REFERENCES users (id)
+		FOREIGN KEY (user_id) REFERENCES users (id)
 	);`
 	)
 
