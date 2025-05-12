@@ -41,6 +41,7 @@
 http://localhost:8080/home
 
 ![Веб-интерфейс](docs/web_ui.png)
+![Логин](docs/login.png)
 
 ### Сервис вычислений
 ![Архитектура](docs/arch.png)  
