@@ -1,11 +1,13 @@
 package orchestrator
 
 import (
+	"encoding/json"
 	"go-final-task/internal/config"
 	"go-final-task/pkg/database"
 	"go-final-task/pkg/models"
 	"log"
 	"net/http"
+	"regexp"
 	"sync"
 )
 
@@ -27,7 +29,12 @@ func New() *Orchestrator {
 	}
 }
 
-var db *database.SqlDB
+var (
+	db     *database.SqlDB
+	mu     sync.Mutex // Мьютекс для синхронизации доступа к результатам
+	ctxKey contextKey = "expression id"
+	userID userid     = "user id"
+)
 
 func (o *Orchestrator) Run() error {
 	mux := http.NewServeMux()
@@ -56,4 +63,34 @@ func registerRoutes(mux *http.ServeMux) {
 	mux.Handle("/css/", http.StripPrefix("/css", fs))
 	mux.Handle("/js/", http.StripPrefix("/js", fs))
 
+}
+
+func checkCookie(cookie *http.Cookie, err error) bool {
+	if err != nil {
+		return false
+	}
+
+	token := cookie.Value
+	return !(len(token) == 0)
+}
+
+type ErrorResponse struct {
+	Res string `json:"error" example:"Internal server error"`
+}
+
+func errorResponse(w http.ResponseWriter, err string, statusCode int) {
+	w.WriteHeader(statusCode)
+	e := ErrorResponse{Res: err}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(e)
+}
+
+func checkId(id string) bool {
+	if id == "-1" || id == "" {
+		return false
+	}
+
+	pattern := "^[0-9]+$"
+	r := regexp.MustCompile(pattern)
+	return r.MatchString(id)
 }
