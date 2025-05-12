@@ -6,6 +6,7 @@ import (
 	calculation "go-final-task/pkg"
 	validator "go-final-task/pkg/auth"
 	"go-final-task/pkg/crypto/jwt"
+	"go-final-task/pkg/crypto/password"
 	"go-final-task/pkg/models"
 	"log"
 	"net/http"
